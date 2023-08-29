@@ -5,7 +5,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import lessonRoutes from "./routes/lesson.js";
 import lookupRoutes from "./routes/lookup.js";
-import { db } from "./database.js";
+import "dotenv/config.js";
 
 const app = express();
 
@@ -25,6 +25,6 @@ app.use("/user", userRoutes);
 app.use("/lesson", lessonRoutes);
 app.use("/lookup", lookupRoutes);
 
-app.listen(3001, () => {
-  console.log("Server started on port 3001");
+app.listen(process.env.PORT, () => {
+  console.log(`Server started on port ${process.env.PORT}`);
 });

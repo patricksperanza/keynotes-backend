@@ -2,8 +2,8 @@ import mysql from "mysql";
 
 // Connect to the database
 export const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: "keynote",
+  database: process.env.DB_NAME,
 });
