@@ -19,17 +19,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "Super Secret (change it)",
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: "none",
-      secure: true, // must be true if sameSite='none'
-    },
-  })
-);
 
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
