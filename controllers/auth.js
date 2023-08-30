@@ -47,6 +47,7 @@ export const register = (req, res) => {
 
 // Login a user
 export const login = (req, res) => {
+  console.log(req.body);
   //Check Type of User to determine if teacher or student
   const q = "SELECT * FROM user WHERE email = ?";
 
