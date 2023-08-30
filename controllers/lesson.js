@@ -2,8 +2,6 @@ import { db } from "../database.js";
 
 // Add a lesson
 export const addLesson = (req, res) => {
-  console.log(req.body);
-
   const query =
     "INSERT INTO post (date, post, student_id, teacher_id ) VALUES (?, ?, ?, ?)";
 
@@ -20,7 +18,6 @@ export const addLesson = (req, res) => {
 
 // Get all lessons between 1 teacher and student
 export const getLessons = (req, res) => {
-  console.log(req.body);
   const query =
     "SELECT * FROM post WHERE (? = student_id OR ? = teacher_id) AND (? = student_id OR ? = teacher_id) ORDER BY post_id DESC";
 
@@ -55,7 +52,6 @@ export const getLessons = (req, res) => {
 
 // Delete a lesson
 export const deleteLesson = (req, res) => {
-  console.log(req.body);
   const query = "DELETE FROM post WHERE post_id = ?";
 
   db.query(query, req.body.id, (err, data) => {
@@ -67,8 +63,6 @@ export const deleteLesson = (req, res) => {
 
 // Edit a lesson
 export const editLesson = (req, res) => {
-  console.log(req.body);
-
   const query = "UPDATE post SET post = ? WHERE post_id = ?";
 
   db.query(query, [req.body.post, req.body.id], (err, data) => {

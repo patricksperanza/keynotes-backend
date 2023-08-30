@@ -11,7 +11,7 @@ const app = express();
 
 // Cors options needed for receiving credentials via cookie
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", "https://keynotesmusic.netlify.app"],
   credentials: true,
   exposedHeaders: ["set-cookie"],
 };
