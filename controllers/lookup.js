@@ -3,14 +3,6 @@ import jwt from "jsonwebtoken";
 
 // Find your teacher with lookup code
 export const find = (req, res) => {
-  // Authenticate user
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
-
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
-  });
-
   // Find the teacher using the lookup code and send the teacher's information
   const query = "SELECT * FROM user WHERE code = ?";
 
@@ -25,14 +17,6 @@ export const find = (req, res) => {
 
 // Add connection to the teacher
 export const add = (req, res) => {
-  // Authenticate the user
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
-
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
-  });
-
   // Insert student and teacher ids into the connection table in database
   const query = "INSERT INTO connection (student_id, teacher_id) VALUES (?, ?)";
 
